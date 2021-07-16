@@ -24,7 +24,7 @@ export default function MainScreen() {
     const classes = useStyles();
     return (
         <Grid container direction="row" className={classes.gridCol} spacing={2} style={{marginTop: 100}}>
-            <Grid item xs={2} alignItems="baseline">
+            <Grid item xs={2}>
                 <FileSection />
             </Grid>
             <Grid item xs>
