@@ -1,7 +1,9 @@
-import { Typography } from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 
 export default function OutputDiv() {
     return (
-        <Typography variant="h4">Output</Typography>
+        <Paper className="paper">
+            <Typography variant="h4">Output</Typography>
+        </Paper>
     )
 }

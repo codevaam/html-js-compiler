@@ -1,21 +1,38 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Theme } from "@material-ui/core";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+
 import FileSection from "./FileSection";
 import CodeEditor from "./CodeEditor";
 import OutputDiv from "./OutputDiv";
 
+import '../styles/MainScreen.component.css';
+
+const useStyles = makeStyles((theme:Theme) => 
+    createStyles({
+        gridCol: {
+            height: '83vh',
+            width: '100%',
+            margin: 0
+        },
+        bgColor: {
+            backgroundColor: '#252525'
+        }
+    })
+)
+
 export default function MainScreen() {
+    const classes = useStyles();
     return (
-        <Grid container direction="row" style={{marginTop: 100}} justifyContent="space-around">
-            <Grid item>
+        <Grid container direction="row" className={classes.gridCol} spacing={2} style={{marginTop: 100}}>
+            <Grid item xs={2} alignItems="baseline">
                 <FileSection />
             </Grid>
-            <Grid item>
+            <Grid item xs>
                 <CodeEditor />
             </Grid>
-            <Grid item>
+            <Grid item xs>
                 <OutputDiv />
             </Grid>
         </Grid>
-
     )
 }
