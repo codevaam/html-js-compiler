@@ -16,7 +16,7 @@ export default function FileSection() {
     const openFiles = useSelector<codeState, codeState['openEditors']>((state)=>state.openEditors)
 
     const dispatch = useDispatch();
-    const addFile = (fileName: String) => {
+    const addFile = (fileName: string) => {
         if(!openFiles.includes(fileName)) {
             dispatch(updateOpenFiles(fileName));
         }
@@ -24,14 +24,14 @@ export default function FileSection() {
     }
     const classes = useStyles();
     return (
-        <Paper className="paper">
-            <div onClick={() => addFile('index.html')}>
+        <Paper className="paper-file">
+            <div className="filename" onClick={() => addFile('index.html')}>
                 <Typography variant="body1" className={classes.drawer}>index.html</Typography>
             </div>
-            <div onClick={() => addFile('index.css')}>
+            <div className="filename" onClick={() => addFile('index.css')}>
                 <Typography variant="body1" className={classes.drawer}>index.css</Typography>
             </div>
-            <div onClick={() => addFile('index.js')}>
+            <div className="filename" onClick={() => addFile('index.js')}>
                 <Typography  variant="body1" className={classes.drawer}>index.js</Typography>
             </div>
         </Paper>

@@ -1,3 +1,11 @@
 .paper { 
     height: 100%;
 }
+
+.paper-file {
+    height: 100%;
+}
+
+.filename {
+    padding: 10px;
+}

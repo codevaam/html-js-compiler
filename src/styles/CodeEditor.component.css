@@ -1,3 +1,5 @@
 .openEditorMessage {
+    display: grid;
+    align-content: center;
     text-align: center;
 }

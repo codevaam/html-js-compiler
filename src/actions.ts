@@ -1,61 +1,71 @@
 interface HTMLAction {
     type: "UPDATE_HTML", 
-    payload: String
+    payload: string
 }
 
 interface JSAction {
     type: "UPDATE_JS",
-    payload: String
+    payload: string
 }
 
 interface CSSUpdate {
     type: "UPDATE_CSS",
-    payload: String
+    payload: string
 }
 
 interface OpenFilesAction {
     type: "UPDATE_OPEN_FILES",
-    payload: String
+    payload: string
 }
 
 interface CloseFilesAction {
     type: "DELETE_OPEN_FILE",
-    payload: String
+    payload: string
 }
 
 interface ActiveFileAction {
     type: "UPDATE_ACTIVE_FILE",
-    payload: String
+    payload: string
 }
 
-export type Action = HTMLAction | JSAction | CSSUpdate | OpenFilesAction | CloseFilesAction | ActiveFileAction
+interface ThemeAction {
+    type: "UPDATE_THEME",
+    payload: string
+}
 
-export const updateHtml = (htmlCode:String):Action => ({
+export type Action = HTMLAction | JSAction | CSSUpdate | OpenFilesAction | CloseFilesAction | ActiveFileAction | ThemeAction
+
+export const updateHtml = (htmlCode:string):Action => ({
     type: "UPDATE_HTML",
     payload: htmlCode
 })
 
-export const updateCss = (cssCode:String):Action => ({
+export const updateCss = (cssCode:string):Action => ({
     type: "UPDATE_CSS",
     payload: cssCode
 })
 
-export const updateJs = (jsCode:String):Action => ({
+export const updateJs = (jsCode:string):Action => ({
     type: "UPDATE_JS",
     payload: jsCode
 })
 
-export const updateOpenFiles = (fileName: String):Action => ({
+export const updateOpenFiles = (fileName: string):Action => ({
     type: "UPDATE_OPEN_FILES",
     payload: fileName
 })
 
-export const delOpenFile = (fileName: String):Action => ({
+export const delOpenFile = (fileName: string):Action => ({
     type: "DELETE_OPEN_FILE",
     payload: fileName
 })
 
-export const updateActiveFile = (fileName: String):Action => ({
+export const updateActiveFile = (fileName: string):Action => ({
     type: "UPDATE_ACTIVE_FILE",
     payload: fileName
+})
+
+export const updateTheme = (theme: string):Action => ({
+    type: "UPDATE_THEME",
+    payload: theme
 })

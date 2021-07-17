@@ -1,19 +1,21 @@
 import { Action } from "./actions"
 
 export interface codeState {
-    html: String,
-    css: String,
-    js: String,
-    openEditors: String[],
-    activeFile: String
+    html: string,
+    css: string,
+    js: string,
+    openEditors: string[],
+    activeFile: string,
+    theme: string
 }
 
 const initalState = {
-    html: 'html code',
-    css: 'css code',
-    js: 'js code',
+    html: '<!-- No need include body or html tag, happy coding -->',
+    css: '/* CSS code goes here */',
+    js: '// Javascrip code',
     openEditors: [],
-    activeFile: ''
+    activeFile: '',
+    theme: 'light'
 }
 
 
@@ -37,6 +39,9 @@ export const codeReducer = (state:codeState = initalState, action: Action) => {
 
         case "UPDATE_ACTIVE_FILE":
             return {...state, activeFile: action.payload}
+
+        case "UPDATE_THEME":
+            return {...state, theme: action.payload}
         default:
             return state
     }
