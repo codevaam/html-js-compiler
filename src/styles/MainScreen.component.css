@@ -1,0 +1,9 @@
+.paper { 
+    height: 100%;
+    box-shadow: 5px 5px 5px gray;
+}
+
+.filename {
+    padding: 2px 0px 0px 5px;
+    background-color: gray;
+}
