@@ -10,7 +10,7 @@ import '../styles/MainScreen.component.css';
 const useStyles = makeStyles((theme:Theme) => 
     createStyles({
         gridCol: {
-            height: '83vh',
+            height: '90vh',
             width: '100%',
             margin: 0
         },
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme:Theme) =>
 export default function MainScreen() {
     const classes = useStyles();
     return (
-        <Grid container direction="row" className={classes.gridCol} spacing={2} >
+        <Grid container direction="row" className={classes.gridCol} spacing={2} style={{marginTop: 70}}>
             <Grid item xs={2}>
                 <FileSection />
             </Grid>

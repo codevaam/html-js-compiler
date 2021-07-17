@@ -1,3 +1,4 @@
+// defining interface for all actions
 interface HTMLAction {
     type: "UPDATE_HTML", 
     payload: string
@@ -35,6 +36,8 @@ interface ThemeAction {
 
 export type Action = HTMLAction | JSAction | CSSUpdate | OpenFilesAction | CloseFilesAction | ActiveFileAction | ThemeAction
 
+
+// action functions to send the payload to the reducer
 export const updateHtml = (htmlCode:string):Action => ({
     type: "UPDATE_HTML",
     payload: htmlCode

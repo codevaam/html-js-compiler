@@ -1,11 +1,12 @@
-import { Typography, Paper, Chip, Divider, Theme } from "@material-ui/core";
+import { Typography, Paper, Chip, Divider, Theme, Grid } from "@material-ui/core";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
+import {useState} from 'react';
 import { delOpenFile, updateCss, updateHtml, updateJs, updateActiveFile } from "../actions";
 import { codeState } from "../codeReducer";
 import CodeIcon from '@material-ui/icons/Code'
 
-import Editor, { useMonaco } from "@monaco-editor/react";
+import Editor from "@monaco-editor/react";
 
 import '../styles/CodeEditor.component.css';
 
@@ -23,9 +24,20 @@ const useStyles = makeStyles((theme:Theme) =>
 )
 
 export default function CodeEditor() {
-    const monaco = useMonaco();
+    // Editor error message interface
+    interface errMsg {
+        code: string,
+        endColumn: Number,
+        endLineNumber: Number,
+        message: string,
+        startColumn: Number,
+        startLineNumber: Number
+    }
+    const [errors, updateErrors] = useState<errMsg[]>([]);
 
     const classes = useStyles();
+
+    // useSelector to get the redux variable
     const activeFile = useSelector<codeState, codeState['activeFile']>((state) => state.activeFile)
     const currentFiles = useSelector<codeState, codeState['openEditors']>((state)=> state.openEditors);
     
@@ -38,6 +50,7 @@ export default function CodeEditor() {
         language: string,
         value: string
     }
+
     var fileStruct: { [fname: string]: fileDesc; } = { };
     fileStruct["index.js"]= {
           name: "index.js",
@@ -56,13 +69,17 @@ export default function CodeEditor() {
     }
 
     const file = fileStruct[activeFile]
-    console.log(html);
 
     const dispatch = useDispatch();
 
     const handleDelete = (fileName:string) => {
         dispatch(delOpenFile(fileName))
     };
+
+    const logErrors = (markers:errMsg[]) => {
+        console.log(errors)
+        updateErrors(markers)
+    }
 
     const handleClick = (fileName:string) => {
         console.log(fileName)
@@ -88,14 +105,33 @@ export default function CodeEditor() {
                         )
                     })}
                     <Divider />
-                    <Editor
-                        height="75vh"
-                        theme="vs-dark"
-                        defaultLanguage={file.language}
-                        path={file.name}
-                        onChange={(e, v) => onUpdateContent(e,v)}
-                        defaultValue={file.value}
-                    />
+                    <Grid container direction="column">
+                        <Grid item>
+                            <Editor
+                                height="65vh"
+                                theme="vs-dark"
+                                defaultLanguage={file.language}
+                                path={file.name}
+                                onChange={(e, v) => onUpdateContent(e,v)}
+                                defaultValue={file.value}
+                                onValidate={logErrors}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Typography component="p" style={{fontWeight: 'bold', paddingLeft: '10px'}}>File errors</Typography>
+                            <Divider/>
+                            <div style={{overflowY: "scroll"}}>
+                            {errors.map(item => (
+                                <>
+                                    <Typography style={{fontWeight: 'bold', color: "red"}} component="span">{item.startColumn}:{item.startLineNumber}</Typography>
+                                    <Typography style={{paddingLeft: '5px'}} component="span">{item.message}</Typography>
+                                    <br/>
+                                </>
+                                )
+                            )}
+                            </div>
+                        </Grid>
+                    </Grid>
                     {/* <TextField value={activeFile==="index.html"?html: activeFile==="index.css"?css:js} onChange={onUpdateContent} variant="outlined" /> */}
                 </>
             : 

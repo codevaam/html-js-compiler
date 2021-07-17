@@ -1,5 +1,6 @@
 import { Action } from "./actions"
 
+// interface
 export interface codeState {
     html: string,
     css: string,
@@ -9,6 +10,8 @@ export interface codeState {
     theme: string
 }
 
+
+// initial state of the redux state object
 const initalState = {
     html: '<!-- No need include body or html tag, happy coding -->',
     css: '/* CSS code goes here */',
@@ -19,7 +22,7 @@ const initalState = {
 }
 
 
-
+// using switch statement for different actions
 export const codeReducer = (state:codeState = initalState, action: Action) => {
     switch(action.type){
         case "UPDATE_HTML":
