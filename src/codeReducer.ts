@@ -13,8 +13,8 @@ const initalState = {
     html: '<!-- No need include body or html tag, happy coding -->',
     css: '/* CSS code goes here */',
     js: '// Javascrip code',
-    openEditors: [],
-    activeFile: '',
+    openEditors: ['index.html'],
+    activeFile: 'index.html',
     theme: 'light'
 }
 

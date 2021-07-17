@@ -1,4 +1,4 @@
-import { Paper } from "@material-ui/core";
+import { Divider, Paper, Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { codeState } from "../codeReducer";
 // import { useState } from "react";
@@ -18,6 +18,8 @@ export default function OutputDiv() {
     console.log(code);
     return (
         <Paper className="paper">
+            <Typography variant="h6" style={{padding: '2px 0px 2px 10px'}}>Output</Typography>
+            <Divider />
             <div dangerouslySetInnerHTML={{__html:code}} />
         </Paper>
     )

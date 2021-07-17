@@ -1,5 +1,9 @@
 .openEditorMessage {
+    height: 100%;
     display: grid;
     align-content: center;
     text-align: center;
+}
+.icon {
+    margin: auto;
 }

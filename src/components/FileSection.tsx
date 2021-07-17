@@ -6,9 +6,13 @@ import { updateActiveFile, updateOpenFiles } from "../actions";
 
 const useStyles = makeStyles((theme:Theme) => 
     createStyles({
-        drawer: {
-            padding: theme.spacing(1)
-        }
+        filename: {
+            backgroundColor: 'rgba(2, 0, 240, 0.05)',
+            paddingLeft: '5px',
+            '&:hover': {
+                backgroundColor: 'rgba(2, 0, 240, 0.1)',
+            }
+        },
     })
 )
 
@@ -24,15 +28,18 @@ export default function FileSection() {
     }
     const classes = useStyles();
     return (
-        <Paper className="paper-file">
-            <div className="filename" onClick={() => addFile('index.html')}>
-                <Typography variant="body1" className={classes.drawer}>index.html</Typography>
+        <Paper className="paper">
+            <div>
+                <Typography variant="body1" style={{paddingTop: '10px', paddingLeft: '5px'}}>Files</Typography>
             </div>
-            <div className="filename" onClick={() => addFile('index.css')}>
-                <Typography variant="body1" className={classes.drawer}>index.css</Typography>
+            <div onClick={() => addFile('index.html')}>
+                <Typography variant="body1" className={classes.filename}>index.html</Typography>
             </div>
-            <div className="filename" onClick={() => addFile('index.js')}>
-                <Typography  variant="body1" className={classes.drawer}>index.js</Typography>
+            <div onClick={() => addFile('index.css')}>
+                <Typography variant="body1" className={classes.filename}>index.css</Typography>
+            </div>
+            <div onClick={() => addFile('index.js')}>
+                <Typography  variant="body1" className={classes.filename}>index.js</Typography>
             </div>
         </Paper>
     )

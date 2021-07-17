@@ -13,10 +13,10 @@ function App() {
   const themeValue = useSelector<codeState, string>((state) => state.theme);
   const theme = createMuiTheme({
     palette: {
-      type: 'dark',
+      type: 'light',
        primary: {
           light: '#fff',
-          main: 'rgb(24,24,24)',
+          main: 'rgb(23, 105, 170)',
           dark: 'rgb(25,25,25)'
        },
        secondary: {
@@ -27,7 +27,7 @@ function App() {
   });
   return (
     <MuiThemeProvider theme={theme}>
-      <NavBar/>
+      {/* <NavBar/> */}
       <MainScreen />    
     </MuiThemeProvider>
   );
