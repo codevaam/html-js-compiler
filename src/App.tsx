@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';  
-
+import {Route, Switch} from "react-router-dom";
 import NavBar from './components/Navbar';
 import MainScreen from './components/MainScreen';
 
@@ -21,10 +21,14 @@ function App() {
     },
   });
   return (
+    <Switch>
     <MuiThemeProvider theme={theme}>
-      <NavBar/>
-      <MainScreen />    
+      <Route path="/">
+        <NavBar/>
+        <MainScreen />    
+      </Route>
     </MuiThemeProvider>
+    </Switch>
   );
 }
 
