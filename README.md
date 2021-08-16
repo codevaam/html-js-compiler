@@ -3,7 +3,7 @@
 Using react along with redux for state management, this webapp allows code autocomplete, lint errors in files, console logs and provides a complete development environment for web app using html and js
 
 ### Deployed link
-[https://codevaam.github.io/dyte-18BCE0113/](https://codevaam.github.io/dyte-18BCE0113/)
+https://html-js-compiler.vercel.app/
 
 ![image](https://user-images.githubusercontent.com/25740573/126043163-7881a467-71fe-44ae-8fa0-8c1e5a0a0ca0.png)
 ![image](https://user-images.githubusercontent.com/25740573/126043191-d35c800a-d213-4308-904f-10940eaaf3bc.png)
